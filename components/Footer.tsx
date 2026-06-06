@@ -50,7 +50,7 @@ export function Footer() {
           <Mail className="w-5.5 h-5.5" />
         </div>
 
-        <div className="flex flex-col items-start gap-3 md:self-end md:items-center">
+        <div className="flex flex-col items-start md:self-end md:items-center">
           <Image
             src={"/mascots/BLACHH-04-1.png"}
             alt="Footer mascot"

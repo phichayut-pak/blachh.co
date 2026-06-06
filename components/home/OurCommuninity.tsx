@@ -1,10 +1,32 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  },
+};
+
+const stagger = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
 const communityCards = [
   {
@@ -71,22 +93,31 @@ export function OurCommuninity() {
   );
 
   return (
-    <section className="bg-[#F7F3EE] px-5 py-14 sm:px-6 md:px-12 md:py-20 lg:px-18">
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center">
-        <p className="font-hanken text-xs leading-6 uppercase tracking-[0.18em] text-[#9A9A94] sm:text-sm">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={fadeUp}
+      className="bg-[#F7F3EE] px-5 py-14 sm:px-6 md:px-12 md:py-20 lg:px-18"
+    >
+      <motion.div
+        variants={stagger}
+        className="mx-auto flex w-full max-w-7xl flex-col items-center"
+      >
+        <motion.p variants={fadeUp} className="font-hanken text-xs leading-6 uppercase tracking-[0.18em] text-[#9A9A94] sm:text-sm">
           OUR COMMUNITY
-        </p>
+        </motion.p>
 
-        <h1 className="mt-3 text-center font-libre text-[2rem] leading-tight text-[#2B211B] sm:text-[2.5rem] md:mt-2.5 md:text-[52px] md:leading-[1.08]">
+        <motion.h1 variants={fadeUp} className="mt-3 text-center font-libre text-[2rem] leading-tight text-[#2B211B] sm:text-[2.5rem] md:mt-2.5 md:text-[52px] md:leading-[1.08]">
           Join the Blachh Community
-        </h1>
+        </motion.h1>
 
-        <h2 className="mt-3 max-w-xl text-center font-hanken text-sm leading-6 text-[#5A5A55] sm:text-[15px] md:mt-3.5 md:leading-7">
+        <motion.h2 variants={fadeUp} className="mt-3 max-w-xl text-center font-hanken text-sm leading-6 text-[#5A5A55] sm:text-[15px] md:mt-3.5 md:leading-7">
           Snapshots of matcha rituals and slow living moments from our
           community
-        </h2>
+        </motion.h2>
 
-        <div className="mt-8 w-full md:hidden">
+        <motion.div variants={fadeUp} className="mt-8 w-full md:hidden">
           <Swiper
             slidesPerView={1}
             spaceBetween={12}
@@ -98,18 +129,18 @@ export function OurCommuninity() {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </motion.div>
 
-        <div className="mt-8 hidden w-full md:mt-6 md:grid md:grid-cols-4 md:gap-2.5">
+        <motion.div variants={fadeUp} className="mt-8 hidden w-full md:mt-6 md:grid md:grid-cols-4 md:gap-2.5">
           {communityCards.map((card, index) => (
             <div key={card.title}>
               {renderCard(card, index, index % 2 === 1 ? "mt-8 md:mt-0" : "")}
             </div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="mx-auto mt-10 w-full max-w-md rounded-3xl border border-[#E7DDD3] bg-[#FBF7F2] px-5 py-5 md:mt-14 md:max-w-none md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0">
+      <motion.div variants={fadeUp} className="mx-auto mt-10 w-full max-w-md rounded-3xl border border-[#E7DDD3] bg-[#FBF7F2] px-5 py-5 md:mt-14 md:max-w-none md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0">
         <div className="flex flex-col items-center justify-center gap-4 md:mb-6 md:flex-row md:gap-2.5">
           <Image
             src="/mascots/BLACHH-02.png"
@@ -131,7 +162,7 @@ export function OurCommuninity() {
             Follow
           </button>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
