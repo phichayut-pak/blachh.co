@@ -1,10 +1,16 @@
 import Link from "next/link";
-import InstagramIcon from "./icons/Instagram";
-import { ChevronDown, Mail } from "lucide-react";
-import TiktokIcon from "./icons/Tiktok";
+import { Mail } from "lucide-react";
 import Image from "next/image";
+import { CurrencySelector } from "@/components/CurrencySelector";
+import type { SupportedCurrencyCode } from "@/lib/currency";
+import InstagramIcon from "./icons/Instagram";
+import TiktokIcon from "./icons/Tiktok";
 
-export function Footer() {
+interface FooterProps {
+  currentCurrency: SupportedCurrencyCode;
+}
+
+export function Footer({ currentCurrency }: FooterProps) {
   return (
     <footer className="flex w-full flex-col gap-8 border-t border-[#E2DDD5] bg-[#FBF9F6] px-5 py-10 md:h-89.25 md:flex-row md:items-center md:justify-center md:gap-3 md:px-16 md:py-20">
       {/* LEFT */}
@@ -57,10 +63,12 @@ export function Footer() {
             width={101}
             height={65}
           />
-          <button className="rounded-[8px] border border-[#1C1C1A] flex justify-center items-center p-2 gap-1">
-            <p className="text-[#1C1C1A] font-cormorant text-sm">Sweden (SEK)</p>
-            <ChevronDown className="w-6 h-6 text-[#1C1C1A] stroke-1" />
-          </button>
+          <CurrencySelector
+            currentCurrency={currentCurrency}
+            showLongLabel
+            buttonClassName="rounded-[8px] border border-[#1C1C1A] p-2"
+            labelClassName="text-[#1C1C1A] font-cormorant text-sm"
+          />
         </div>
       </div>
     </footer>

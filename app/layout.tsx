@@ -6,9 +6,7 @@ import {
   Hanken_Grotesk,
   Libre_Baskerville,
 } from "next/font/google";
-import { Banner } from "@/components/Banner";
-import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
+import { CartProvider } from "@/components/cart/CartProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -51,14 +49,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} ${hankenGrotesk.variable} ${libreBaskerville.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Banner />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );

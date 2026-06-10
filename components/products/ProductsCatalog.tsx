@@ -3,11 +3,18 @@
 import { useEffect, useId, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import type { Product, ProductCategory } from "@/components/products/productsData";
+import {
+  getPriceFilterConfig,
+  getPriceFilterThresholds,
+  type SupportedCurrencyCode,
+} from "@/lib/currency";
+import { localizeHref } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 import "swiper/css";
@@ -34,12 +41,6 @@ const filterSections = {
     { value: "medium" as const, label: "31g - 50g" },
     { value: "large" as const, label: "Above 50g" },
   ],
-  price: [
-    { value: "all" as const, label: "All prices" },
-    { value: "under-350" as const, label: "Under 350 SEK" },
-    { value: "350-500" as const, label: "350 - 500 SEK" },
-    { value: "500-plus" as const, label: "500 SEK and above" },
-  ],
 };
 
 const defaultFilters: FilterState = {
@@ -62,12 +63,17 @@ function getSizeBucket(size: number): Exclude<SizeFilter, "all"> {
   return "large";
 }
 
-function getPriceBucket(price: number): Exclude<PriceFilter, "all"> {
-  if (price < 350) {
+function getPriceBucket(
+  price: number,
+  currencyCode: SupportedCurrencyCode,
+): Exclude<PriceFilter, "all"> {
+  const thresholds = getPriceFilterThresholds(currencyCode);
+
+  if (price < thresholds.under) {
     return "under-350";
   }
 
-  if (price <= 500) {
+  if (price <= thresholds.upper) {
     return "350-500";
   }
 
@@ -124,12 +130,14 @@ function FilterPanel({
   onReset,
   onApply,
   footerClassName,
+  priceOptions,
 }: {
   draftFilters: FilterState;
   setDraftFilters: React.Dispatch<React.SetStateAction<FilterState>>;
   onReset: () => void;
   onApply: () => void;
   footerClassName?: string;
+  priceOptions: ReadonlyArray<{ value: string; label: string }>;
 }) {
   return (
     <>
@@ -149,7 +157,7 @@ function FilterPanel({
         <FilterSection
           title="Price"
           value={draftFilters.price}
-          options={filterSections.price}
+          options={priceOptions}
           onChange={(nextValue) =>
             setDraftFilters((current) => ({
               ...current,
@@ -203,6 +211,8 @@ function FilterTrigger({
 }
 
 export function ProductsCatalog({ products }: ProductsCatalogProps) {
+  const pathname = usePathname();
+  const currentCurrency = (products[0]?.currency ?? "USD") as SupportedCurrencyCode;
   const [activeCategory, setActiveCategory] =
     useState<CategoryOption>("All products");
   const [appliedFilters, setAppliedFilters] =
@@ -211,6 +221,7 @@ export function ProductsCatalog({ products }: ProductsCatalogProps) {
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const desktopFilterLabelId = useId();
   const prefersReducedMotion = useReducedMotion();
+  const priceOptions = getPriceFilterConfig(currentCurrency);
 
   const revealSection = {
     hidden: { opacity: 0 },
@@ -289,7 +300,7 @@ export function ProductsCatalog({ products }: ProductsCatalogProps) {
       getSizeBucket(product.size) === appliedFilters.size;
     const matchesPrice =
       appliedFilters.price === "all" ||
-      getPriceBucket(product.price) === appliedFilters.price;
+      getPriceBucket(product.price, currentCurrency) === appliedFilters.price;
 
     return matchesCategory && matchesSize && matchesPrice;
   });
@@ -401,28 +412,30 @@ export function ProductsCatalog({ products }: ProductsCatalogProps) {
         {filteredProducts.map((product) => (
           <MotionLink
             key={`${product.productName}-${product.size}`}
-            href="/product-detail"
-            className="flex flex-col gap-2 border border-[#E8E3DC] px-5 transition-[background-color,transform] duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#EFE8DE] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1C1C1A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F0E8]"
+            href={localizeHref("/product-detail", pathname ?? "/")}
+            prefetch={false}
+            className="flex flex-col gap-4 border border-[#E8E3DC] px-4 py-3 transition-[background-color,transform] duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#EFE8DE]"
             variants={revealCard}
           >
             <motion.div className="flex justify-center" variants={revealImage}>
               <Image
                 src={product.imageSrc}
                 alt={product.productName}
-                width={220}
-                height={300}
-                className="h-[300px] w-[220px] object-contain"
+                width={196}
+                height={268}
+                className="h-[268px] w-[196px] object-contain"
               />
             </motion.div>
 
-            <div className="flex flex-col">
-              <p className="font-hanken text-[28px] font-bold uppercase text-[#1C1C1A]">
+            <div className="flex flex-col gap-1">
+              <p className="font-hanken text-[24px] font-bold uppercase leading-tight text-[#1C1C1A]">
                 {product.productName}
               </p>
-              <p className="font-hanken text-[24px] text-[#1C1C1A]">
-                {product.size}g - {product.price} {product.currency}
+              <p className="font-hanken text-[22px] leading-snug text-[#1C1C1A]">
+                {product.size}g - {product.formattedPrice}
               </p>
             </div>
+
           </MotionLink>
         ))}
       </motion.section>
@@ -476,6 +489,7 @@ export function ProductsCatalog({ products }: ProductsCatalogProps) {
                   setDraftFilters={setDraftFilters}
                   onReset={() => setDraftFilters(defaultFilters)}
                   onApply={applyMobileFilters}
+                  priceOptions={priceOptions}
                   footerClassName="fixed inset-x-0 bottom-0 space-y-3 border-t border-[#E7DDD3] bg-[#F8F4EE] px-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] pt-4"
                 />
               </div>

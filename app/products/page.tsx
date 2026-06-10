@@ -1,10 +1,7 @@
-import { ProductsPage } from "@/components/products/ProductsPage";
-import { getProducts } from "@/lib/products";
+import { redirect } from "next/navigation";
 
-export const dynamic = "force-dynamic";
+import { defaultLocale } from "@/lib/i18n";
 
-export default async function Products() {
-  const products = await getProducts();
-
-  return <ProductsPage products={products} />;
+export default function ProductsPageRedirect() {
+  redirect(`/${defaultLocale}/products`);
 }

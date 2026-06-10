@@ -1,5 +1,7 @@
-import { ContactPage } from "@/components/contact/ContactPage";
+import { redirect } from "next/navigation";
 
-export default function Contact() {
-  return <ContactPage />;
+import { defaultLocale } from "@/lib/i18n";
+
+export default function ContactPageRedirect() {
+  redirect(`/${defaultLocale}/contact`);
 }

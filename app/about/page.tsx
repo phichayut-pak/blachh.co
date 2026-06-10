@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
-import { AboutPageContent } from "./AboutPageContent";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "About | Blachh",
-  description:
-    "Learn the story behind Blachh, our approach to matcha, and the slower rituals that shape the brand.",
-};
+import { defaultLocale } from "@/lib/i18n";
 
-export default function AboutPage() {
-  return <AboutPageContent />;
+export default function AboutPageRedirect() {
+  redirect(`/${defaultLocale}/about`);
 }

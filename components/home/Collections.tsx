@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight, MoveRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { products } from "@/components/products/productsData";
+import { LocalizedLink } from "@/components/LocalizedLink";
+import type { Product } from "@/components/products/productsData";
 
 import "swiper/css";
 
@@ -24,17 +24,22 @@ const highlightedProductNames = [
   "Nami Strawberry",
 ] as const;
 
-const highlightedProducts = highlightedProductNames
-  .map((productName) =>
-    products.find((product) => product.productName === productName),
-  )
-  .filter((product) => product !== undefined);
+interface CollectionsProps {
+  products: Product[];
+}
 
-export function Collections() {
+export function Collections({ products }: CollectionsProps) {
+  const highlightedProducts = highlightedProductNames
+    .map((productName) =>
+      products.find((product) => product.productName === productName),
+    )
+    .filter((product): product is Product => product !== undefined);
+
   const renderProductCard = (product: (typeof highlightedProducts)[number]) => (
-    <Link
+    <LocalizedLink
       key={`${product.productName}-${product.size}`}
       href="/product-detail"
+      prefetch={false}
       className="flex w-full flex-col gap-0 md:w-[150px]"
     >
       <div className="flex justify-center">
@@ -57,12 +62,12 @@ export function Collections() {
 
       <div className="flex items-center justify-between">
         <p className="font-hanken text-[12px] leading-[27px] font-normal text-[#6F8B5E]">
-          {product.price} {product.currency}
+          {product.formattedPrice}
         </p>
 
         <MoveRight className="h-6 w-6 text-black" />
       </div>
-    </Link>
+    </LocalizedLink>
   );
 
   return (
@@ -76,8 +81,9 @@ export function Collections() {
           Find what speaks to your ritual.
         </h2>
 
-        <Link
+        <LocalizedLink
           href="/products"
+          prefetch={false}
           className="mt-5 inline-flex w-fit items-center gap-2 rounded-sm px-1 py-1.5"
         >
           <span className="font-hanken text-[13px] leading-[27px] font-normal uppercase text-black underline">
@@ -88,7 +94,7 @@ export function Collections() {
             className="h-[12px] w-[12px] shrink-0 stroke-black"
             strokeWidth={1.25}
           />
-        </Link>
+        </LocalizedLink>
 
         <div className="mt-10 w-full md:hidden">
           <Swiper slidesPerView={1.15} spaceBetween={16} className="w-full">

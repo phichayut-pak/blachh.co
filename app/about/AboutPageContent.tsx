@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
+
+import { LocalizedLink } from "@/components/LocalizedLink";
 
 const highlights = [
   "Ceremonial-grade matcha chosen for a smooth, rounded finish.",
@@ -251,12 +252,13 @@ export function AboutPageContent() {
             Start with the product, then make the routine your own.
           </p>
 
-          <Link
+          <LocalizedLink
             href="/products"
+            prefetch={false}
             className="mt-7 inline-flex items-center rounded-sm bg-[#FFCAD4] px-6 py-3 font-hanken text-sm text-[#2B211B] transition-transform duration-200 hover:-translate-y-0.5"
           >
             Shop the collection
-          </Link>
+          </LocalizedLink>
         </div>
       </motion.section>
     </motion.div>
