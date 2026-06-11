@@ -88,43 +88,6 @@ export function ContactPage({ dictionary }: ContactPageProps) {
         </div>
       </section>
 
-      <section className="px-5 py-14 sm:px-6 md:px-12 md:py-18 lg:px-16">
-        <div className="mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
-          <div className="max-w-md">
-            <p className="font-hanken text-xs uppercase tracking-[0.18em] text-[#8E857E] sm:text-sm">
-              {dictionary.benefits.eyebrow}
-            </p>
-            <h2 className="mt-3 font-libre text-[2rem] leading-tight text-[#1C1C1A] md:text-[44px]">
-              {dictionary.benefits.title}
-            </h2>
-            <p className="mt-4 font-hanken text-sm leading-7 text-[#5A5A55]">
-              {dictionary.benefits.description}
-            </p>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {dictionary.benefits.cards.map((item, index) => (
-              <article
-                key={item.title}
-                className="flex min-h-60 flex-col justify-between rounded-[1.75rem] border border-[#E2DDD5] bg-[#FBF9F6] p-5"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F2E8DC] font-libre text-lg text-[#2B211B]">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-                <div className="mt-10">
-                  <h3 className="font-libre text-[1.45rem] leading-tight text-[#1C1C1A]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 font-hanken text-sm leading-7 text-[#5A5A55]">
-                    {item.description}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section
         id="wholesale-inquiry"
         className="border-y border-[#E2DDD5] bg-[#FBF7F2] px-5 py-14 sm:px-6 md:px-12 md:py-18 lg:px-16"
