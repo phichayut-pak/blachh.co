@@ -36,7 +36,7 @@ export default async function LocalizedLayout({
     <div
       className={
         lang === "th"
-          ? "[--font-app-sans:var(--font-noto-sans-thai)] [--font-app-cormorant:var(--font-noto-sans-thai)] [--font-app-hanken:var(--font-noto-sans-thai)] [--font-app-libre:var(--font-noto-sans-thai)] [--font-app-heading:var(--font-noto-sans-thai)]"
+          ? "[--font-app-sans:var(--font-fallback-thai)] [--font-app-cormorant:var(--font-fallback-thai)] [--font-app-hanken:var(--font-fallback-thai)] [--font-app-libre:var(--font-fallback-thai)] [--font-app-heading:var(--font-fallback-thai)]"
           : undefined
       }
     >

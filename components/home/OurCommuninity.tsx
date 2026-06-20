@@ -45,6 +45,10 @@ export function OurCommuninity({ dictionary }: OurCommuninityProps) {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
+  type CommunityCard = (typeof communityCards)[number] & {
+    imageAlt?: string;
+    imageUrl?: string;
+  };
 
   const playVideo = (index: number) => {
     setActiveIndex(index);
@@ -63,7 +67,7 @@ export function OurCommuninity({ dictionary }: OurCommuninityProps) {
   };
 
   const renderCard = (
-    card: (typeof communityCards)[number],
+    card: CommunityCard,
     index: number,
   ) => {
     const isActive = index === activeIndex;
@@ -100,8 +104,8 @@ export function OurCommuninity({ dictionary }: OurCommuninityProps) {
           </video>
         ) : hasImage ? (
           <ImageWithFallback
-            src={card.imageUrl}
-            fallbackSrc={card.imageUrl}
+            src={card.imageUrl as string}
+            fallbackSrc={card.imageUrl as string}
             alt={card.imageAlt || card.title}
             fill
             className="object-cover"

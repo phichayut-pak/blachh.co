@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
 
-  revalidateTag("sanity-content");
+  revalidateTag("sanity-content", "max");
 
   return NextResponse.json({ revalidated: true });
 }

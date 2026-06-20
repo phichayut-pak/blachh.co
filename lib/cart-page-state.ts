@@ -1,4 +1,4 @@
-import type { ShopifyCart } from "./shopify-cart.ts";
+import type { ShopifyCart } from "./shopify-cart";
 
 export function resolveCartPageCart(
   clientCart: ShopifyCart,

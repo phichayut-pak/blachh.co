@@ -2,7 +2,7 @@ import {
   convertPrice,
   type CurrencyRates,
   type SupportedCurrencyCode,
-} from "./currency.ts";
+} from "./currency";
 
 export const cartCookieName = "blachh-shopify-cart-id";
 
