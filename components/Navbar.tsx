@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, ShoppingBag, X } from "lucide-react";
@@ -9,6 +8,7 @@ import { ChevronDown, Menu, ShoppingBag, X } from "lucide-react";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { useCart } from "@/components/cart/CartProvider";
 import { CurrencySelector } from "@/components/CurrencySelector";
+import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 import type { SupportedCurrencyCode } from "@/lib/currency";
 import {
   type Dictionary,
@@ -55,6 +55,8 @@ export function Navbar({ currentCurrency, lang, dictionary }: NavbarProps) {
   const [isMobileLanguageMenuOpen, setIsMobileLanguageMenuOpen] = useState(false);
   const pathname = usePathname();
   const { cartItemCount, openCart } = useCart();
+  const logoSrc = dictionary.site.logoUrl || "/logo/logo.png";
+  const logoAlt = dictionary.site.logoAlt || "Blachh Logo";
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
@@ -106,11 +108,12 @@ export function Navbar({ currentCurrency, lang, dictionary }: NavbarProps) {
 
           <div className="justify-self-center">
             <Link href={`/${lang}`} className="block" aria-label={dictionary.a11y.goHome}>
-              <Image
-                src="/logo/logo.png"
+              <ImageWithFallback
+                src={logoSrc}
+                fallbackSrc="/logo/logo.png"
                 width={176}
                 height={32}
-                alt="Blachh Logo"
+                alt={logoAlt}
                 className="h-auto w-[144px]"
               />
             </Link>
@@ -143,11 +146,12 @@ export function Navbar({ currentCurrency, lang, dictionary }: NavbarProps) {
 
           <div className="justify-self-center">
             <Link href={`/${lang}`} className="block" aria-label={dictionary.a11y.goHome}>
-              <Image
-                src="/logo/logo.png"
+              <ImageWithFallback
+                src={logoSrc}
+                fallbackSrc="/logo/logo.png"
                 width={176}
                 height={32}
-                alt="Blachh Logo"
+                alt={logoAlt}
                 className="h-auto w-[176px]"
               />
             </Link>
@@ -230,11 +234,12 @@ export function Navbar({ currentCurrency, lang, dictionary }: NavbarProps) {
               className="justify-self-center"
               onClick={closeMenu}
             >
-              <Image
-                src="/logo/logo.png"
+              <ImageWithFallback
+                src={logoSrc}
+                fallbackSrc="/logo/logo.png"
                 width={176}
                 height={32}
-                alt="Blachh Logo"
+                alt={logoAlt}
                 className="h-auto w-[144px]"
               />
             </Link>

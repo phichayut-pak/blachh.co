@@ -9,10 +9,7 @@ import { SlidersHorizontal, X } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import type { Product, ProductCategory } from "@/components/products/productsData";
-import {
-  getPriceFilterThresholds,
-  type SupportedCurrencyCode,
-} from "@/lib/currency";
+import { type SupportedCurrencyCode } from "@/lib/currency";
 import { localizeHref, type Dictionary } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -58,8 +55,14 @@ function getSizeBucket(size: number): Exclude<SizeFilter, "all"> {
 function getPriceBucket(
   price: number,
   currencyCode: SupportedCurrencyCode,
+  thresholdsByCurrency: Dictionary["products"]["filters"]["thresholds"],
 ): Exclude<PriceFilter, "all"> {
-  const thresholds = getPriceFilterThresholds(currencyCode);
+  const thresholds =
+    currencyCode === "SEK"
+      ? thresholdsByCurrency.sek
+      : currencyCode === "EUR"
+        ? thresholdsByCurrency.eur
+        : thresholdsByCurrency.usd;
 
   if (price < thresholds.under) {
     return "under-350";
@@ -255,6 +258,7 @@ export function ProductsCatalog({
   const desktopFilterLabelId = useId();
   const prefersReducedMotion = useReducedMotion();
   const priceFilterLabels = dictionary.filters.priceOptions;
+  const priceThresholds = dictionary.filters.thresholds;
   const priceOptions = [
     { value: "all", label: priceFilterLabels.all },
     {
@@ -369,7 +373,8 @@ export function ProductsCatalog({
       getSizeBucket(product.size) === appliedFilters.size;
     const matchesPrice =
       appliedFilters.price === "all" ||
-      getPriceBucket(product.price, currentCurrency) === appliedFilters.price;
+      getPriceBucket(product.price, currentCurrency, priceThresholds) ===
+        appliedFilters.price;
 
     return matchesCategory && matchesSize && matchesPrice;
   });

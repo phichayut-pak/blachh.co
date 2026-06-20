@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 import type { Dictionary } from "@/lib/i18n";
 
 const heroContainer = {
@@ -35,6 +35,10 @@ interface HeroProps {
 }
 
 export function Hero({ dictionary }: HeroProps) {
+  const heroImageSrc = dictionary.imageUrl || "/hero-background.png";
+  const heroImageAlt = dictionary.imageAlt || "Hero background";
+  const hasSplitTitle = Boolean(dictionary.titleLineOne && dictionary.titleLineTwo);
+
   return (
     <section className="relative min-h-[72svh] w-full overflow-hidden md:min-h-[45rem]">
       <motion.div
@@ -43,9 +47,10 @@ export function Hero({ dictionary }: HeroProps) {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="absolute inset-0"
       >
-        <Image
-          src="/hero-background.png"
-          alt="Hero background"
+        <ImageWithFallback
+          src={heroImageSrc}
+          fallbackSrc="/hero-background.png"
+          alt={heroImageAlt}
           fill
           priority
           sizes="100vw"
@@ -64,7 +69,7 @@ export function Hero({ dictionary }: HeroProps) {
         >
           <motion.p
             variants={heroItem}
-            className="font-hanken text-xs leading-6 uppercase tracking-[0.18em] text-[#1C1C1A80] sm:text-sm sm:leading-7"
+            className="font-hanken text-xs leading-6 uppercase tracking-[0.18em] text-[#8E847B] sm:text-sm sm:leading-7"
           >
             {dictionary.eyebrow}
           </motion.p>
@@ -73,19 +78,28 @@ export function Hero({ dictionary }: HeroProps) {
             variants={heroItem}
             className="mt-3 font-libre text-4xl leading-tight font-normal text-[#1C1C1A] sm:mt-4 sm:text-5xl md:text-[58px] md:leading-[1.02]"
           >
-            {dictionary.title}
+            {hasSplitTitle ? (
+              <>
+                {dictionary.titleLineOne}
+                <span className="block italic text-[#7C9360]">
+                  {dictionary.titleLineTwo}
+                </span>
+              </>
+            ) : (
+              dictionary.title
+            )}
           </motion.h1>
 
           <motion.p
             variants={heroItem}
-            className="mt-3 max-w-sm font-hanken text-sm leading-6 text-[#1C1C1AB2] md:leading-7"
+            className="mt-3 max-w-sm font-hanken text-sm leading-6 text-[#5C534D] md:leading-7"
           >
             {dictionary.description}
           </motion.p>
 
           <motion.div
             variants={heroItem}
-            className="mt-4 font-hanken text-sm leading-6 text-[#1C1C1A99] md:mt-5 md:leading-7"
+            className="mt-4 font-hanken text-sm leading-6 text-[#6B625C] md:mt-5 md:leading-7"
           >
             {dictionary.rating}
           </motion.div>

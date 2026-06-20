@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 
+import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 import { LocalizedLink } from "@/components/LocalizedLink";
 import type { Dictionary } from "@/lib/i18n";
 
@@ -60,6 +60,13 @@ interface AboutPageContentProps {
 }
 
 export function AboutPageContent({ dictionary }: AboutPageContentProps) {
+  const heroImageSrc =
+    dictionary.hero.imageUrl ||
+    "https://images.unsplash.com/photo-1753009712810-3f72c3f72548?auto=format&fit=crop&w=1200&q=80";
+  const craftImageSrc =
+    dictionary.craft.imageUrl ||
+    "https://images.unsplash.com/photo-1724709162826-2793827d6418?auto=format&fit=crop&w=1200&q=80";
+
   return (
     <motion.div
       initial="hidden"
@@ -122,8 +129,9 @@ export function AboutPageContent({ dictionary }: AboutPageContentProps) {
             className="relative mx-auto w-full max-w-xl lg:max-w-none"
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-[#EFE5DB] shadow-[0_30px_80px_rgba(55,37,24,0.12)]">
-              <Image
-                src={heroImage}
+              <ImageWithFallback
+                src={heroImageSrc}
+                fallbackSrc={heroImage}
                 alt={dictionary.hero.imageAlt}
                 fill
                 priority
@@ -166,8 +174,9 @@ export function AboutPageContent({ dictionary }: AboutPageContentProps) {
       >
         <div className="mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-[#EDE1D6]">
-              <Image
-                src={craftImage}
+              <ImageWithFallback
+                src={craftImageSrc}
+                fallbackSrc={craftImage}
                 alt={dictionary.craft.imageAlt}
               fill
               sizes="(min-width: 1024px) 38vw, 100vw"

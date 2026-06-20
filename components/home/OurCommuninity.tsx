@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
+import { Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 import type { Dictionary } from "@/lib/i18n";
 
 import "swiper/css";
@@ -40,6 +41,7 @@ export function OurCommuninity({ dictionary }: OurCommuninityProps) {
     router.push("https://instagram.com/blachh.co");
   };
   const communityCards = dictionary.cards;
+  const mascotImageSrc = dictionary.mascotImageUrl || "/mascots/BLACHH-02.png";
 
   const [activeIndex, setActiveIndex] = useState(0);
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
@@ -65,12 +67,15 @@ export function OurCommuninity({ dictionary }: OurCommuninityProps) {
     index: number,
   ) => {
     const isActive = index === activeIndex;
+    const hasVideo = typeof card.videoUrl === "string" && card.videoUrl.length > 0;
+    const hasImage = typeof card.imageUrl === "string" && card.imageUrl.length > 0;
+
     return (
       <div
-        className={`relative aspect-[3/4] shrink-0 overflow-hidden rounded-2xl bg-[#EDE3D6] transition-[width] duration-500 ease-out md:aspect-[4/5] md:rounded-md ${
+        className={`relative aspect-[3/4] shrink-0 overflow-hidden rounded-2xl bg-[#EDE3D6] transition-[width,opacity] duration-500 ease-out md:aspect-[4/5] md:rounded-md ${
           isActive
-            ? "w-[260px] sm:w-[300px] md:w-[340px] lg:w-[380px]"
-            : "w-[200px] sm:w-[230px] md:w-[260px] lg:w-[290px]"
+            ? "w-[240px] opacity-100 sm:w-[272px] md:w-[300px] lg:w-[328px]"
+            : "w-[216px] opacity-60 sm:w-[244px] md:w-[270px] lg:w-[296px]"
         }`}
         aria-label={card.title}
         onMouseEnter={() => playVideo(index)}
@@ -79,19 +84,30 @@ export function OurCommuninity({ dictionary }: OurCommuninityProps) {
         onBlur={resetActiveCard}
         tabIndex={0}
       >
-        <video
-          ref={(el) => {
-            videoRefs.current[index] = el;
-          }}
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-          autoPlay={isActive}
-          loop
-          muted
-          playsInline
-          preload="metadata"
-        >
-          <source src={card.videoUrl} type="video/mp4" />
-        </video>
+        {hasVideo ? (
+          <video
+            ref={(el) => {
+              videoRefs.current[index] = el;
+            }}
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+            autoPlay={isActive}
+            loop
+            muted
+            playsInline
+            preload="metadata"
+          >
+            <source src={card.videoUrl} type="video/mp4" />
+          </video>
+        ) : hasImage ? (
+          <ImageWithFallback
+            src={card.imageUrl}
+            fallbackSrc={card.imageUrl}
+            alt={card.imageAlt || card.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 300px, 380px"
+          />
+        ) : null}
       </div>
     );
   };
@@ -122,9 +138,11 @@ export function OurCommuninity({ dictionary }: OurCommuninityProps) {
 
         <motion.div variants={fadeUp} className="mt-8 w-full md:mt-6">
           <Swiper
+            modules={[Mousewheel]}
             slidesPerView="auto"
             spaceBetween={12}
             className="w-full"
+            mousewheel={{ forceToAxis: true }}
           >
             {communityCards.map((card, index) => (
               <SwiperSlide key={index} className="!w-auto pb-1">
@@ -137,8 +155,9 @@ export function OurCommuninity({ dictionary }: OurCommuninityProps) {
 
       <motion.div variants={fadeUp} className="mx-auto mt-10 w-full max-w-md rounded-3xl border border-[#E7DDD3] bg-[#FBF7F2] px-5 py-5 md:mt-14 md:max-w-none md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0">
         <div className="flex flex-col items-center justify-center gap-4 md:mb-6 md:flex-row md:gap-2.5">
-          <Image
-            src="/mascots/BLACHH-02.png"
+          <ImageWithFallback
+            src={mascotImageSrc}
+            fallbackSrc="/mascots/BLACHH-02.png"
             alt={dictionary.mascotAlt}
             width={84}
             height={80}

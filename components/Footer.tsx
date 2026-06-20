@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
-import Image from "next/image";
 import { CurrencySelector } from "@/components/CurrencySelector";
+import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 import type { SupportedCurrencyCode } from "@/lib/currency";
 import type { Dictionary } from "@/lib/i18n";
 import InstagramIcon from "./icons/Instagram";
@@ -13,6 +13,9 @@ interface FooterProps {
 }
 
 export function Footer({ currentCurrency, dictionary }: FooterProps) {
+  const mascotImageSrc = dictionary.mascotImageUrl || "/mascots/BLACHH-04-1.png";
+  const mascotAlt = dictionary.mascotAlt || "Footer mascot";
+
   return (
     <footer className="flex w-full flex-col gap-8 border-t border-[#E2DDD5] bg-[#FBF9F6] px-5 py-10 md:h-89.25 md:flex-row md:items-center md:justify-center md:gap-3 md:px-16 md:py-20">
       {/* LEFT */}
@@ -71,9 +74,10 @@ export function Footer({ currentCurrency, dictionary }: FooterProps) {
         </div>
 
         <div className="flex flex-col items-start md:self-end md:items-center">
-          <Image
-            src={"/mascots/BLACHH-04-1.png"}
-            alt="Footer mascot"
+          <ImageWithFallback
+            src={mascotImageSrc}
+            fallbackSrc="/mascots/BLACHH-04-1.png"
+            alt={mascotAlt}
             width={101}
             height={65}
           />

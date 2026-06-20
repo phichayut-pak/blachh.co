@@ -27,10 +27,16 @@
     "visitTiktok": "Besok Blachh pa TikTok",
     "emailBlachh": "Mejla Blachh"
   },
+  "site": {
+    "logoUrl": "/logo/logo.png",
+    "logoAlt": "Blachh-logotyp"
+  },
   "banner": {
     "message": "Fri frakt vid bestallningar over 800 kr · Forhandsboka nu · Skickas inom 7-14 dagar"
   },
   "footer": {
+    "mascotImageUrl": "/mascots/BLACHH-04-1.png",
+    "mascotAlt": "Sidfotsmaskot",
     "links": [
       "Om oss",
       "Koppolicy",
@@ -45,9 +51,13 @@
     "hero": {
       "eyebrow": "Ceremoniell kvalitet · Stenmalen i Japan",
       "title": "Gjort for langsamma morgnar.",
+      "titleLineOne": "Gjort for",
+      "titleLineTwo": "langsamma morgnar.",
       "description": "Matcha som smakar som morgonen du har letat efter.",
       "rating": "★★★★★ 4.9 · 134 omdomen",
-      "cta": "Handla nu"
+      "cta": "Handla nu",
+      "imageUrl": "/hero-background.png",
+      "imageAlt": "Hero-bakgrund"
     },
     "collections": {
       "eyebrow": "UTFORSKA PRODUKTER",
@@ -79,9 +89,35 @@
         }
       ],
       "followText": "Folj oss pa Instagram",
-      "instagramHandle": "@blachh.co",
+      "instagramHandle": "@blachh.matcha",
       "followCta": "Folj",
+      "mascotImageUrl": "/mascots/BLACHH-02.png",
       "mascotAlt": "Blachh-maskot"
+    },
+    "followBlachh": {
+      "title": "Folj Blachh.co",
+      "instagramUrl": "https://www.instagram.com/blachh.co/",
+      "tiktokUrl": "https://www.tiktok.com/@blachh.co",
+      "cards": [
+        {
+          "title": "Morgonhorn",
+          "videoUrl": "https://assets.mixkit.co/videos/43936/43936-720.mp4"
+        },
+        {
+          "title": "Ismatcha",
+          "imageUrl": "https://images.unsplash.com/photo-1753009712810-3f72c3f72548?auto=format&fit=crop&w=900&q=80",
+          "imageAlt": "Ismatcha pa ett bord"
+        },
+        {
+          "title": "Vispritual",
+          "videoUrl": "https://assets.mixkit.co/videos/41220/41220-720.mp4"
+        },
+        {
+          "title": "Hyll detaljer",
+          "imageUrl": "https://images.unsplash.com/photo-1724709162826-2793827d6418?auto=format&fit=crop&w=900&q=80",
+          "imageAlt": "Livsstilshylla med bocker och matchaforemal"
+        }
+      ]
     },
     "testimonials": {
       "titleStart": "Alskad av",
@@ -134,6 +170,7 @@
         "Stenmalen i Japan",
         "Stillsam vardagsritual"
       ],
+      "imageUrl": "https://images.unsplash.com/photo-1753009712810-3f72c3f72548?auto=format&fit=crop&w=1200&q=80",
       "imageAlt": "En matchaskal forberedd som del av en lugn morgonritual"
     },
     "why": {
@@ -146,6 +183,7 @@
       "quote": "Målet ar inte bara bra matcha. Det ar en battre kansla runt stunden nar du gor den."
     },
     "craft": {
+      "imageUrl": "https://images.unsplash.com/photo-1724709162826-2793827d6418?auto=format&fit=crop&w=1200&q=80",
       "imageEyebrow": "Hantverk och ursprung",
       "imageTitle": "Matcha vald for smak, textur och en kopp du vill ha igen i morgon.",
       "imageAlt": "Keramiska skalar och teverktyg arrangerade pa ett trabord",
@@ -186,6 +224,7 @@
           "value": "wholesale@blachh.co"
         }
       ],
+      "imageUrl": "https://images.unsplash.com/photo-1755001437609-bb2abcde9755?auto=format&fit=crop&w=1400&q=80",
       "imageAlt": "Kafeinterior med hyllor och disk"
     },
     "benefits": {
@@ -259,6 +298,7 @@
       "submit": "Skicka forfragan"
     },
     "emailCta": {
+      "mascotImageUrl": "/mascots/BLACHH-02.png",
       "mascotAlt": "Blachh-maskot",
       "title": "Foredrar du e-post?",
       "description": "Kontakta oss direkt pa wholesale@blachh.co eller besok @blachh.co for att se den bredare varlden runt varumarket.",
@@ -303,6 +343,20 @@
           "between": "$35 - $50",
           "over": "$50 och uppat"
         }
+      },
+      "thresholds": {
+        "sek": {
+          "under": 350,
+          "upper": 500
+        },
+        "eur": {
+          "under": 30,
+          "upper": 45
+        },
+        "usd": {
+          "under": 35,
+          "upper": 50
+        }
       }
     },
     "labels": {
@@ -313,6 +367,41 @@
   "product": {
     "emptyState": "Ingen produkt ar tillganglig.",
     "freeShippingPrefix": "Fri frakt pa bestallningar over",
+    "freeShippingThresholds": {
+      "sek": 500,
+      "eur": 45,
+      "usd": 50
+    },
+    "rating": {
+      "average": 4.9,
+      "breakdown": [
+        {
+          "rating": 5,
+          "fillPercent": 84,
+          "reviewsCount": 4142
+        },
+        {
+          "rating": 4,
+          "fillPercent": 10,
+          "reviewsCount": 493
+        },
+        {
+          "rating": 3,
+          "fillPercent": 4,
+          "reviewsCount": 197
+        },
+        {
+          "rating": 2,
+          "fillPercent": 1.5,
+          "reviewsCount": 74
+        },
+        {
+          "rating": 1,
+          "fillPercent": 0.5,
+          "reviewsCount": 28
+        }
+      ]
+    },
     "reviewSummary": {
       "count": "128 omdomen",
       "sectionTitle": "Kundomdomen",

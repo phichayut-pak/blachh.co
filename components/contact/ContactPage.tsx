@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Mail, MapPin, Store } from "lucide-react";
 
+import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 import type { Dictionary } from "@/lib/i18n";
 
 const contactHeroImage =
@@ -22,6 +22,9 @@ interface ContactPageProps {
 }
 
 export function ContactPage({ dictionary }: ContactPageProps) {
+  const heroImageSrc = dictionary.hero.imageUrl || contactHeroImage;
+  const mascotImageSrc = dictionary.emailCta.mascotImageUrl || "/mascots/BLACHH-02.png";
+
   return (
     <div className="bg-[#F7F3EE] text-[#2B211B]">
       <section className="border-b border-[#E2DDD5] px-5 py-14 sm:px-6 md:px-12 md:py-20 lg:px-16">
@@ -76,8 +79,9 @@ export function ContactPage({ dictionary }: ContactPageProps) {
           </div>
 
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem]">
-            <Image
-              src={contactHeroImage}
+            <ImageWithFallback
+              src={heroImageSrc}
+              fallbackSrc={contactHeroImage}
               alt={dictionary.hero.imageAlt}
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
@@ -176,8 +180,9 @@ export function ContactPage({ dictionary }: ContactPageProps) {
       <section className="px-5 py-14 sm:px-6 md:px-12 md:py-18 lg:px-16">
         <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-5 rounded-[2rem] border border-[#E2DDD5] bg-[#F3ECE3] px-6 py-8 text-center sm:px-8 md:flex-row md:items-center md:justify-between md:text-left">
           <div className="flex items-center gap-4">
-            <Image
-              src="/mascots/BLACHH-02.png"
+            <ImageWithFallback
+              src={mascotImageSrc}
+              fallbackSrc="/mascots/BLACHH-02.png"
               alt={dictionary.emailCta.mascotAlt}
               width={84}
               height={80}

@@ -2,7 +2,7 @@ import en from "@/messages/en.json";
 import sv from "@/messages/sv.json";
 import th from "@/messages/th.json";
 import { getSiteContent } from "@/lib/sanity/queries";
-import { resolveLocale } from "@/lib/sanity/localize";
+import { mergeContent, resolveLocale } from "@/lib/sanity/localize";
 
 export const locales = ["en", "th", "sv"] as const;
 
@@ -29,22 +29,62 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
 
   return {
     ...base,
-    banner: cms.banner ? (resolveLocale(cms.banner, locale) as Dictionary["banner"]) : base.banner,
-    footer: cms.footer ? (resolveLocale(cms.footer, locale) as Dictionary["footer"]) : base.footer,
-    home: cms.home ? (resolveLocale(cms.home, locale) as Dictionary["home"]) : base.home,
-    about: cms.about ? (resolveLocale(cms.about, locale) as Dictionary["about"]) : base.about,
-    contact: cms.contact
-      ? (resolveLocale(cms.contact, locale) as Dictionary["contact"])
-      : base.contact,
-    product: {
-      ...base.product,
-      ...(cms.productCopy
-        ? (resolveLocale(cms.productCopy, locale) as Pick<
-            Dictionary["product"],
-            "tabs" | "reviewCarousel" | "reviewSummary"
-          >)
-        : {}),
-    },
+    site: mergeContent(
+      base.site,
+      cms.site ? (resolveLocale(cms.site, locale) as Dictionary["site"]) : null,
+    ),
+    banner: mergeContent(
+      base.banner,
+      cms.banner ? (resolveLocale(cms.banner, locale) as Dictionary["banner"]) : null,
+    ),
+    footer: mergeContent(
+      base.footer,
+      cms.footer ? (resolveLocale(cms.footer, locale) as Dictionary["footer"]) : null,
+    ),
+    home: mergeContent(
+      base.home,
+      cms.home ? (resolveLocale(cms.home, locale) as Dictionary["home"]) : null,
+    ),
+    about: mergeContent(
+      base.about,
+      cms.about ? (resolveLocale(cms.about, locale) as Dictionary["about"]) : null,
+    ),
+    contact: mergeContent(
+      base.contact,
+      cms.contact ? (resolveLocale(cms.contact, locale) as Dictionary["contact"]) : null,
+    ),
+    products: mergeContent(
+      base.products,
+      cms.productCopy
+        ? (resolveLocale(cms.productCopy, locale) as { catalog?: Dictionary["products"] })
+            .catalog ?? null
+        : null,
+    ),
+    product: mergeContent(
+      base.product,
+      cms.productCopy
+        ? (() => {
+            const localized = resolveLocale(cms.productCopy, locale) as {
+              purchase?: Pick<
+                Dictionary["product"],
+                "emptyState" | "freeShippingPrefix" | "freeShippingThresholds"
+              >;
+              rating?: Dictionary["product"]["rating"];
+              reviewSummary?: Dictionary["product"]["reviewSummary"];
+              tabs?: Dictionary["product"]["tabs"];
+              reviewCarousel?: Dictionary["product"]["reviewCarousel"];
+            };
+
+            return {
+              ...(localized.purchase ?? {}),
+              rating: localized.rating,
+              reviewSummary: localized.reviewSummary,
+              tabs: localized.tabs,
+              reviewCarousel: localized.reviewCarousel,
+            };
+          })()
+        : null,
+    ),
   };
 }
 

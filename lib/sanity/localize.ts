@@ -35,3 +35,32 @@ export function resolveLocale(value: unknown, locale: Locale): unknown {
 
   return value;
 }
+
+export function mergeContent<T>(base: T, overlay: unknown): T {
+  if (overlay === undefined || overlay === null) {
+    return base;
+  }
+
+  if (Array.isArray(base)) {
+    return (Array.isArray(overlay) ? overlay : base) as T;
+  }
+
+  if (
+    base &&
+    typeof base === "object" &&
+    !Array.isArray(base) &&
+    overlay &&
+    typeof overlay === "object" &&
+    !Array.isArray(overlay)
+  ) {
+    const result: Record<string, unknown> = { ...(base as Record<string, unknown>) };
+
+    for (const [key, value] of Object.entries(overlay)) {
+      result[key] = key in result ? mergeContent(result[key], value) : value;
+    }
+
+    return result as T;
+  }
+
+  return overlay as T;
+}

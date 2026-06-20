@@ -27,10 +27,16 @@
     "visitTiktok": "Visit Blachh on TikTok",
     "emailBlachh": "Email Blachh"
   },
+  "site": {
+    "logoUrl": "/logo/logo.png",
+    "logoAlt": "Blachh Logo"
+  },
   "banner": {
     "message": "Free shipping on orders over 800 kr · Pre-order now · Ships in 7-14 days"
   },
   "footer": {
+    "mascotImageUrl": "/mascots/BLACHH-04-1.png",
+    "mascotAlt": "Footer mascot",
     "links": [
       "About Us",
       "Shopping Policy",
@@ -45,9 +51,13 @@
     "hero": {
       "eyebrow": "Ceremonial Grade · Stone-Milled in Japan",
       "title": "Made for slow mornings.",
+      "titleLineOne": "Made for",
+      "titleLineTwo": "slow mornings.",
       "description": "Matcha that tastes like the morning you've been looking for.",
       "rating": "★★★★★ 4.9 · 134 reviews",
-      "cta": "Shop Now"
+      "cta": "Shop Now",
+      "imageUrl": "/hero-background.png",
+      "imageAlt": "Hero background"
     },
     "collections": {
       "eyebrow": "BROWSE PRODUCTS",
@@ -79,9 +89,35 @@
         }
       ],
       "followText": "Follow us on Instagram",
-      "instagramHandle": "@blachh.co",
+      "instagramHandle": "@blachh.matcha",
       "followCta": "Follow",
+      "mascotImageUrl": "/mascots/BLACHH-02.png",
       "mascotAlt": "Blachh Mascot"
+    },
+    "followBlachh": {
+      "title": "Follow Blachh.co",
+      "instagramUrl": "https://www.instagram.com/blachh.co/",
+      "tiktokUrl": "https://www.tiktok.com/@blachh.co",
+      "cards": [
+        {
+          "title": "Morning corner",
+          "videoUrl": "https://assets.mixkit.co/videos/43936/43936-720.mp4"
+        },
+        {
+          "title": "Iced matcha",
+          "imageUrl": "https://images.unsplash.com/photo-1753009712810-3f72c3f72548?auto=format&fit=crop&w=900&q=80",
+          "imageAlt": "Iced matcha on a table"
+        },
+        {
+          "title": "Whisk ritual",
+          "videoUrl": "https://assets.mixkit.co/videos/41220/41220-720.mp4"
+        },
+        {
+          "title": "Shelf details",
+          "imageUrl": "https://images.unsplash.com/photo-1724709162826-2793827d6418?auto=format&fit=crop&w=900&q=80",
+          "imageAlt": "Lifestyle shelf with books and matcha objects"
+        }
+      ]
     },
     "testimonials": {
       "titleStart": "Loved by",
@@ -125,43 +161,45 @@
   },
   "about": {
     "hero": {
-      "eyebrow": "Our Story",
-      "titleLineOne": "A calmer start,",
-      "titleLineTwo": "shaped by matcha.",
-      "description": "Blachh is built around the feeling that a daily ritual can be both beautiful and useful. We care about calm flavor, soft design, and the kind of product you reach for without thinking twice.",
+      "eyebrow": "About Us",
+      "titleLineOne": "Blachh",
+      "titleLineTwo": "matcha & co.",
+      "description": "A lifestyle concept store inspired by the little joys of everyday life, with matcha at the heart of everything we do.",
       "badges": [
-        "Ceremonial Grade",
-        "Stone-Milled in Japan",
-        "Quiet Daily Ritual"
+        "From Japan & beyond",
+        "We love matcha",
+        "Matcha & others"
       ],
-      "imageAlt": "Matcha bowl prepared as part of a calm morning ritual"
+      "imageUrl": "https://images.unsplash.com/photo-1753009712810-3f72c3f72548?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Iced matcha drink representing the Blachh lifestyle concept"
     },
     "why": {
-      "eyebrow": "Why Blachh",
-      "title": "A softer approach to product and routine.",
+      "eyebrow": "What We Are",
+      "title": "Matcha first, then a whole world around it.",
       "paragraphs": [
-        "Blachh starts from a simple idea: small rituals shape the tone of the day. Matcha is the center of that ritual, but the experience around it matters too, the color, the pace, the bowl, the moment of pause before everything else starts.",
-        "We wanted the brand to feel refined without being distant. Clean taste, quiet visuals, and a mood that sits somewhere between a Japanese tea ritual and a very modern slow morning at home."
+        "Blachh.co started by bringing carefully curated products from Asia to Europe, with matcha at the center of the brand. What began as a love for quality matcha slowly grew into something more: a community.",
+        "Our world is for people who love slow moments, books, cute aesthetics like Monchhichi, and a feel-good lifestyle. From time to time, we also host matcha pop-ups so people can come by, taste, and experience the quality of our matcha in person."
       ],
-      "quote": "The goal is not just good matcha. It is a better feeling around the moment you make it."
+      "quote": "More than a store, Blachh is a cozy community where matcha, creativity, and good energy come together."
     },
     "craft": {
-      "imageEyebrow": "Craft & sourcing",
-      "imageTitle": "Matcha chosen for flavor, texture, and a cup you want again tomorrow.",
-      "imageAlt": "Ceramic bowls and tea ware arranged on a wooden table",
-      "eyebrow": "The product",
-      "title": "Quality matters most when the ritual becomes daily.",
-      "description": "A beautiful ritual does not last if the cup disappoints. Blachh is shaped around matcha that feels smooth, vibrant, and easy to keep returning to, whether it is whisked traditionally or folded into a quieter modern routine.",
+      "imageUrl": "https://images.unsplash.com/photo-1724709162826-2793827d6418?auto=format&fit=crop&w=1200&q=80",
+      "imageEyebrow": "Blachh things",
+      "imageTitle": "Lifestyle and daily rituals, books and self-care, fun and friends.",
+      "imageAlt": "Lifestyle flat lay with books, beauty items, and matcha products",
+      "eyebrow": "The community",
+      "title": "Made for aesthetic-driven matcha lovers and everyday joy.",
+      "description": "Blachh speaks to Millennials and Gen Z who care about lifestyle, self-care, books, and cute details as much as they care about matcha. Alongside matcha powder from Japan and beyond, we curate skincare, vitamins, self-care products, books, and Monchhichi pieces that fit that world.",
       "highlights": [
-        "Ceremonial-grade matcha chosen for a smooth, rounded finish.",
-        "Stone-milled tradition and a flavor profile made for everyday rituals.",
-        "A visual world inspired by quiet mornings, ceramics, and slow living."
+        "Lifestyle and daily rituals.",
+        "Books and self-care.",
+        "Fun and friends."
       ]
     },
     "cta": {
-      "eyebrow": "Begin the ritual",
-      "title": "Explore the matcha made for slow mornings.",
-      "description": "Start with the product, then make the routine your own.",
+      "eyebrow": "Welcome to Blachh",
+      "title": "Be part of our community, matcha and joy.",
+      "description": "We are currently online-based in Sweden and ship across Europe.",
       "button": "Shop the collection"
     }
   },
@@ -186,6 +224,7 @@
           "value": "wholesale@blachh.co"
         }
       ],
+      "imageUrl": "https://images.unsplash.com/photo-1755001437609-bb2abcde9755?auto=format&fit=crop&w=1400&q=80",
       "imageAlt": "Cafe interior with display shelves and counter"
     },
     "benefits": {
@@ -259,6 +298,7 @@
       "submit": "Submit inquiry"
     },
     "emailCta": {
+      "mascotImageUrl": "/mascots/BLACHH-02.png",
       "mascotAlt": "Blachh mascot",
       "title": "Prefer email?",
       "description": "Reach us directly at wholesale@blachh.co or visit @blachh.co for the broader world around the brand.",
@@ -303,6 +343,20 @@
           "between": "$35 - $50",
           "over": "$50 and above"
         }
+      },
+      "thresholds": {
+        "sek": {
+          "under": 350,
+          "upper": 500
+        },
+        "eur": {
+          "under": 30,
+          "upper": 45
+        },
+        "usd": {
+          "under": 35,
+          "upper": 50
+        }
       }
     },
     "labels": {
@@ -313,6 +367,41 @@
   "product": {
     "emptyState": "No product available.",
     "freeShippingPrefix": "Free shipping on orders over",
+    "freeShippingThresholds": {
+      "sek": 500,
+      "eur": 45,
+      "usd": 50
+    },
+    "rating": {
+      "average": 4.9,
+      "breakdown": [
+        {
+          "rating": 5,
+          "fillPercent": 84,
+          "reviewsCount": 4142
+        },
+        {
+          "rating": 4,
+          "fillPercent": 10,
+          "reviewsCount": 493
+        },
+        {
+          "rating": 3,
+          "fillPercent": 4,
+          "reviewsCount": 197
+        },
+        {
+          "rating": 2,
+          "fillPercent": 1.5,
+          "reviewsCount": 74
+        },
+        {
+          "rating": 1,
+          "fillPercent": 0.5,
+          "reviewsCount": 28
+        }
+      ]
+    },
     "reviewSummary": {
       "count": "128 reviews",
       "sectionTitle": "Customer Reviews",

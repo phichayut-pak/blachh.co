@@ -9,11 +9,6 @@ export interface CurrencyOption {
   shortLabel: string;
 }
 
-interface PriceFilterThresholds {
-  under: number;
-  upper: number;
-}
-
 interface ResolveCurrencyPreferenceInput {
   cookieCountryCode?: string | null;
   headerCountryCode?: string | null;
@@ -103,18 +98,6 @@ const fallbackConversionRatesByBaseCurrency: Record<
     EUR: 0.94,
     USD: 1,
   },
-};
-
-const freeShippingThresholdByCurrency: Record<SupportedCurrencyCode, number> = {
-  SEK: 500,
-  EUR: 45,
-  USD: 50,
-};
-
-const priceFilterThresholdsByCurrency: Record<SupportedCurrencyCode, PriceFilterThresholds> = {
-  SEK: { under: 350, upper: 500 },
-  EUR: { under: 30, upper: 45 },
-  USD: { under: 35, upper: 50 },
 };
 
 export const supportedCurrencyOptions: CurrencyOption[] = [
@@ -243,14 +226,4 @@ export function convertPriceFromSek(
   currencyCode: SupportedCurrencyCode,
 ): number {
   return convertPrice(amountInSek, "SEK", currencyCode);
-}
-
-export function getFreeShippingLabel(currencyCode: SupportedCurrencyCode): string {
-  const threshold = freeShippingThresholdByCurrency[currencyCode];
-
-  return `Free shipping on orders over ${formatMoney(threshold, currencyCode)}`;
-}
-
-export function getPriceFilterThresholds(currencyCode: SupportedCurrencyCode) {
-  return priceFilterThresholdsByCurrency[currencyCode];
 }

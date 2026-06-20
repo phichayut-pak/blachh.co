@@ -1,4 +1,5 @@
 import { Collections } from "@/components/home/Collections";
+import { FollowBlachh } from "@/components/home/FollowBlachh";
 import { Hero } from "@/components/home/Hero";
 import { OurCommuninity } from "@/components/home/OurCommuninity";
 import { Testimonials } from "@/components/home/Testimonials";
@@ -37,6 +38,10 @@ export default async function LocalizedHome({ params }: LocalizedHomeProps) {
         dictionary={dictionary.home.testimonials}
         previousLabel={dictionary.a11y.showPreviousTestimonials}
         nextLabel={dictionary.a11y.showMoreTestimonials}
+      />
+      <FollowBlachh
+        dictionary={dictionary.home.followBlachh}
+        a11y={dictionary.a11y}
       />
     </>
   );

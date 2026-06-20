@@ -27,10 +27,16 @@
     "visitTiktok": "ไปที่ TikTok ของ Blachh",
     "emailBlachh": "ส่งอีเมลถึง Blachh"
   },
+  "site": {
+    "logoUrl": "/logo/logo.png",
+    "logoAlt": "โลโก้ Blachh"
+  },
   "banner": {
     "message": "จัดส่งฟรีเมื่อสั่งซื้อเกิน 800 kr · พรีออเดอร์ได้แล้ววันนี้ · จัดส่งภายใน 7-14 วัน"
   },
   "footer": {
+    "mascotImageUrl": "/mascots/BLACHH-04-1.png",
+    "mascotAlt": "มาสคอตส่วนท้าย",
     "links": [
       "เกี่ยวกับเรา",
       "นโยบายการสั่งซื้อ",
@@ -45,9 +51,13 @@
     "hero": {
       "eyebrow": "เกรดพิธีการ · โม่หินจากญี่ปุ่น",
       "title": "สร้างมาเพื่อเช้าที่ช้าลง",
+      "titleLineOne": "สร้างมาเพื่อ",
+      "titleLineTwo": "เช้าที่ช้าลง",
       "description": "มัทฉะที่ให้รสเหมือนเช้าที่คุณเฝ้ามองหา",
       "rating": "★★★★★ 4.9 · 134 รีวิว",
-      "cta": "เลือกซื้อเลย"
+      "cta": "เลือกซื้อเลย",
+      "imageUrl": "/hero-background.png",
+      "imageAlt": "ภาพพื้นหลังส่วนฮีโร่"
     },
     "collections": {
       "eyebrow": "เลือกชมสินค้า",
@@ -79,9 +89,35 @@
         }
       ],
       "followText": "ติดตามเราบน Instagram",
-      "instagramHandle": "@blachh.co",
+      "instagramHandle": "@blachh.matcha",
       "followCta": "ติดตาม",
+      "mascotImageUrl": "/mascots/BLACHH-02.png",
       "mascotAlt": "มาสคอต Blachh"
+    },
+    "followBlachh": {
+      "title": "ติดตาม Blachh.co",
+      "instagramUrl": "https://www.instagram.com/blachh.co/",
+      "tiktokUrl": "https://www.tiktok.com/@blachh.co",
+      "cards": [
+        {
+          "title": "มุมยามเช้า",
+          "videoUrl": "https://assets.mixkit.co/videos/43936/43936-720.mp4"
+        },
+        {
+          "title": "มัทฉะเย็น",
+          "imageUrl": "https://images.unsplash.com/photo-1753009712810-3f72c3f72548?auto=format&fit=crop&w=900&q=80",
+          "imageAlt": "แก้วมัทฉะเย็นบนโต๊ะ"
+        },
+        {
+          "title": "จังหวะการตีชา",
+          "videoUrl": "https://assets.mixkit.co/videos/41220/41220-720.mp4"
+        },
+        {
+          "title": "รายละเอียดบนชั้นวาง",
+          "imageUrl": "https://images.unsplash.com/photo-1724709162826-2793827d6418?auto=format&fit=crop&w=900&q=80",
+          "imageAlt": "ชั้นวางของไลฟ์สไตล์พร้อมหนังสือและของเกี่ยวกับมัทฉะ"
+        }
+      ]
     },
     "testimonials": {
       "titleStart": "คนรัก",
@@ -134,6 +170,7 @@
         "โม่หินจากญี่ปุ่น",
         "พิธีเงียบ ๆ ทุกวัน"
       ],
+      "imageUrl": "https://images.unsplash.com/photo-1753009712810-3f72c3f72548?auto=format&fit=crop&w=1200&q=80",
       "imageAlt": "ชามมัทฉะที่เตรียมเป็นส่วนหนึ่งของพิธียามเช้าอันสงบ"
     },
     "why": {
@@ -146,6 +183,7 @@
       "quote": "เป้าหมายไม่ใช่แค่มัทฉะที่ดี แต่คือความรู้สึกที่ดียิ่งขึ้นรอบช่วงเวลาที่คุณชงมัน"
     },
     "craft": {
+      "imageUrl": "https://images.unsplash.com/photo-1724709162826-2793827d6418?auto=format&fit=crop&w=1200&q=80",
       "imageEyebrow": "งานฝีมือและแหล่งที่มา",
       "imageTitle": "มัทฉะที่คัดเลือกเพื่อรสชาติ เนื้อสัมผัส และถ้วยที่คุณอยากกลับมาดื่มอีกในวันพรุ่งนี้",
       "imageAlt": "ชามเซรามิกและอุปกรณ์ชงชาวางอยู่บนโต๊ะไม้",
@@ -186,6 +224,7 @@
           "value": "wholesale@blachh.co"
         }
       ],
+      "imageUrl": "https://images.unsplash.com/photo-1755001437609-bb2abcde9755?auto=format&fit=crop&w=1400&q=80",
       "imageAlt": "ภายในคาเฟ่ที่มีชั้นวางสินค้าและเคาน์เตอร์"
     },
     "benefits": {
@@ -259,6 +298,7 @@
       "submit": "ส่งคำถาม"
     },
     "emailCta": {
+      "mascotImageUrl": "/mascots/BLACHH-02.png",
       "mascotAlt": "มาสคอต Blachh",
       "title": "สะดวกอีเมลมากกว่าไหม",
       "description": "ติดต่อเราโดยตรงที่ wholesale@blachh.co หรือแวะไปที่ @blachh.co เพื่อสัมผัสโลกของแบรนด์ในมุมกว้างขึ้น",
@@ -303,6 +343,20 @@
           "between": "$35 - $50",
           "over": "$50 ขึ้นไป"
         }
+      },
+      "thresholds": {
+        "sek": {
+          "under": 350,
+          "upper": 500
+        },
+        "eur": {
+          "under": 30,
+          "upper": 45
+        },
+        "usd": {
+          "under": 35,
+          "upper": 50
+        }
       }
     },
     "labels": {
@@ -313,6 +367,41 @@
   "product": {
     "emptyState": "ยังไม่มีสินค้าที่พร้อมแสดง",
     "freeShippingPrefix": "จัดส่งฟรีเมื่อสั่งซื้อเกิน",
+    "freeShippingThresholds": {
+      "sek": 500,
+      "eur": 45,
+      "usd": 50
+    },
+    "rating": {
+      "average": 4.9,
+      "breakdown": [
+        {
+          "rating": 5,
+          "fillPercent": 84,
+          "reviewsCount": 4142
+        },
+        {
+          "rating": 4,
+          "fillPercent": 10,
+          "reviewsCount": 493
+        },
+        {
+          "rating": 3,
+          "fillPercent": 4,
+          "reviewsCount": 197
+        },
+        {
+          "rating": 2,
+          "fillPercent": 1.5,
+          "reviewsCount": 74
+        },
+        {
+          "rating": 1,
+          "fillPercent": 0.5,
+          "reviewsCount": 28
+        }
+      ]
+    },
     "reviewSummary": {
       "count": "128 รีวิว",
       "sectionTitle": "รีวิวจากลูกค้า",
