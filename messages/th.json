@@ -47,6 +47,25 @@
     ],
     "copyright": "© 2025 Blachh Matcha"
   },
+  "emailFooter": {
+    "links": [
+      {
+        "label": "เกี่ยวกับเรา",
+        "href": "https://blachh.co/about"
+      },
+      {
+        "label": "นโยบายความเป็นส่วนตัว",
+        "href": "https://blachh.co/privacy"
+      },
+      {
+        "label": "เงื่อนไขการให้บริการ",
+        "href": "https://blachh.co/terms"
+      }
+    ],
+    "supportEmail": "hello@blachh.co",
+    "wholesaleEmail": "wholesale@blachh.co",
+    "copyright": "© 2025 Blachh Matcha"
+  },
   "home": {
     "hero": {
       "eyebrow": "เกรดพิธีการ · โม่หินจากญี่ปุ่น",

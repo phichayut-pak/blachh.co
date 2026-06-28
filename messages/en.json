@@ -47,6 +47,25 @@
     ],
     "copyright": "© 2025 Blachh Matcha"
   },
+  "emailFooter": {
+    "links": [
+      {
+        "label": "About us",
+        "href": "https://blachh.co/about"
+      },
+      {
+        "label": "Privacy policy",
+        "href": "https://blachh.co/privacy"
+      },
+      {
+        "label": "Terms of service",
+        "href": "https://blachh.co/terms"
+      }
+    ],
+    "supportEmail": "hello@blachh.co",
+    "wholesaleEmail": "wholesale@blachh.co",
+    "copyright": "© 2025 Blachh Matcha"
+  },
   "home": {
     "hero": {
       "eyebrow": "Ceremonial Grade · Stone-Milled in Japan",

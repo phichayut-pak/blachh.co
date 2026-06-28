@@ -47,6 +47,25 @@
     ],
     "copyright": "© 2025 Blachh Matcha"
   },
+  "emailFooter": {
+    "links": [
+      {
+        "label": "Om oss",
+        "href": "https://blachh.co/about"
+      },
+      {
+        "label": "Integritetspolicy",
+        "href": "https://blachh.co/privacy"
+      },
+      {
+        "label": "Anvandarvillkor",
+        "href": "https://blachh.co/terms"
+      }
+    ],
+    "supportEmail": "hello@blachh.co",
+    "wholesaleEmail": "wholesale@blachh.co",
+    "copyright": "© 2025 Blachh Matcha"
+  },
   "home": {
     "hero": {
       "eyebrow": "Ceremoniell kvalitet · Stenmalen i Japan",

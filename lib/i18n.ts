@@ -41,6 +41,12 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
       base.footer,
       cms.footer ? (resolveLocale(cms.footer, locale) as Dictionary["footer"]) : null,
     ),
+    emailFooter: mergeContent(
+      base.emailFooter,
+      cms.emailFooter
+        ? (resolveLocale(cms.emailFooter, locale) as Dictionary["emailFooter"])
+        : null,
+    ),
     home: mergeContent(
       base.home,
       cms.home ? (resolveLocale(cms.home, locale) as Dictionary["home"]) : null,

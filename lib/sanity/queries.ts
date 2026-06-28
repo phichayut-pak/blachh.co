@@ -4,6 +4,7 @@ export interface SiteContent {
   site: unknown | null;
   banner: unknown | null;
   footer: unknown | null;
+  emailFooter: unknown | null;
   home: unknown | null;
   about: unknown | null;
   contact: unknown | null;
@@ -25,10 +26,8 @@ const SITE_CONTENT_QUERY = /* groq */ `{
     "logoUrl": logo.asset->url
   },
   "banner": *[_id == "bannerSettings"][0],
-  "footer": *[_id == "footerSettings"][0]{
-    ...,
-    "mascotImageUrl": mascotImage.asset->url
-  },
+  "footer": *[_id == "footerSettings"][0],
+  "emailFooter": *[_id == "emailFooterSettings"][0],
   "home": *[_id == "homePage"][0]{
     ...,
     hero {

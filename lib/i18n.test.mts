@@ -47,6 +47,9 @@ test("getDictionary returns translated page content from locale dictionaries", a
   assert.equal(en.home.hero.title, "Made for slow mornings.");
   assert.equal(th.home.hero.cta, "เลือกซื้อเลย");
   assert.equal(sv.contact.hero.eyebrow, "PARTNER OCH GROSSIST");
+  assert.equal(en.emailFooter.links[0]?.label, "About us");
+  assert.equal(th.emailFooter.supportEmail, "hello@blachh.co");
+  assert.equal(sv.emailFooter.links[2]?.href, "https://blachh.co/terms");
   assert.equal(en.product.tabs.items.length, 3);
   assert.equal(th.cart.title, "ตรวจสอบคำสั่งซื้อของคุณ");
   assert.equal(

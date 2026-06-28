@@ -13,7 +13,7 @@ interface FooterProps {
 }
 
 export function Footer({ currentCurrency, dictionary }: FooterProps) {
-  const mascotImageSrc = dictionary.mascotImageUrl || "/mascots/BLACHH-04-1.png";
+  const mascotImageSrc = "/mascots/BLACHH-04-1.png";
   const mascotAlt = dictionary.mascotAlt || "Footer mascot";
 
   return (
